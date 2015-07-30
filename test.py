@@ -17,7 +17,6 @@ def test_contrast(rgb1, rgb2, expected):
     c2 = contrast.rgb(rgb2, rgb1)
     assert c1 == expected
     assert c2 == expected
-    return
 
 
 @pytest.mark.parametrize("c,expected,large_expected",
@@ -57,7 +56,7 @@ def test_passes_AAA(c, expected, large_expected):
     got_large = contrast.passes_AAA(c, large=True)
     assert got_large == large_expected
 
-    
+
 @given(color, color)
 def test_hypothesis_contrast(rgb1, rgb2):
     c1 = contrast.rgb(rgb1, rgb2)

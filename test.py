@@ -10,7 +10,8 @@ color = tuples(color_channel, color_channel, color_channel)
 
 @pytest.mark.parametrize("rgb1,rgb2,expected",
                          [[(0.0, 0.0, 0.0), (1.0, 1.0, 1.0), 21.0],
-                          [(0.0, 0.0, 0.0), (0.0, 0.0, 0.0), 1.0]])
+                          [(0.0, 0.0, 0.0), (0.0, 0.0, 0.0), 1.0],
+                          [(0.0, 198/255.0, 0.0), (0.0, 0.0, 198/255.0), 5.000229313902297]])
 def test_contrast(rgb1, rgb2, expected):
     c1 = contrast.rgb(rgb1, rgb2)
     c2 = contrast.rgb(rgb2, rgb1)

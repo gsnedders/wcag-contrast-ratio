@@ -12,20 +12,13 @@ def rgb(rgb1, rgb2):
         if not 0.0 <= b <= 1.0:
             raise ValueError("b is out of valid range (0.0 - 1.0)")
 
-    rgb1_lightness = (min(rgb1) + max(rgb1)) / 2
-    rgb2_lightness = (min(rgb2) + max(rgb2)) / 2
+    l1 = _relative_luminance(*rgb1)
+    l2 = _relative_luminance(*rgb2)
 
-    if rgb1_lightness > rgb2_lightness:
-        lighter = rgb1
-        darker = rgb2
+    if l1 > l2:
+        return (l1 + 0.05) / (l2 + 0.05)
     else:
-        lighter = rgb2
-        darker = rgb1
-
-    l1 = _relative_luminance(*lighter)
-    l2 = _relative_luminance(*darker)
-
-    return (l1 + 0.05) / (l2 + 0.05)
+        return (l2 + 0.05) / (l1 + 0.05)
 
 
 def _relative_luminance(r, g, b):

@@ -60,6 +60,6 @@ def test_passes_AAA(c, expected, large_expected):
 @given(color, color)
 def test_hypothesis_contrast(rgb1, rgb2):
     c1 = contrast.rgb(rgb1, rgb2)
-    c2 = contrast.rgb(rgb1, rgb2)
+    c2 = contrast.rgb(rgb2, rgb1)
     assert 1.0 <= c1 <= 21.0
     assert c1 == c2

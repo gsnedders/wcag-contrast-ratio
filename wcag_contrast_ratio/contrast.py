@@ -1,6 +1,6 @@
 from __future__ import division
 
-__all__ = ["rgb", "passes_AA", "passes_AAA"]
+__all__ = ["rgb", "passes_AA", "passes_AAA", "rgb_as_int"]
 
 
 def rgb(rgb1, rgb2):
@@ -48,3 +48,16 @@ def passes_AAA(contrast, large=False):
         return contrast >= 4.5
     else:
         return contrast >= 7.0
+
+
+def translate(value, value_min_range, value_max_range, min_range, max_range):
+    value_span = value_max_range - value_min_range
+    span = max_range - min_range
+    scaled = float(value - value_min_range) / float(value_span)
+    return min_range + (scaled * span)
+
+
+def rgb_as_int(rgb1, rgb2):
+    n_rgb1 = tuple([translate(c, 0, 255, 0, 1) for c in rgb1])
+    n_rgb2 = tuple([translate(c, 0, 255, 0, 1) for c in rgb2])
+    return rgb(n_rgb1, n_rgb2)

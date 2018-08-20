@@ -28,3 +28,13 @@ the required level:
   True
 
 .. _WCAG 2.0: http://www.w3.org/TR/WCAG20/
+
+If you want to use RGB values as integers, you can run:
+
+.. code-block:: python
+
+  >> import wcag_contrast_ratio as contrast
+  >> black = (0, 0, 0)
+  >> white = (255, 255, 255)
+  >> contrast.rgb_as_int(black, white)
+  21.0
